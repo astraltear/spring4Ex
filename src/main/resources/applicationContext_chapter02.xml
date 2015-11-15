@@ -21,4 +21,14 @@
  	<bean id="dao" class="sample.spring.chapter02.bankapp.dao.FixedDepositDaoFactory" factory-method="getFixedDepositDao">
  		<constructor-arg index="0" value="jdbc"></constructor-arg>
  	</bean>
+ 	
+ <!-- factory bean config dao 
+ 
+ 	<bean id="daoFactory" class="sample.spring.chapter02.bankapp.dao.FixedDepositDaoFactory"></bean>
+ 	
+ 	<bean id="dao" factory-bean="daoFactory" factory-method="getFixedDepositDao">
+ 		<constructor-arg index="0" value="jdbc"></constructor-arg>
+ 	</bean>
+ 	
+  -->
 </beans>
