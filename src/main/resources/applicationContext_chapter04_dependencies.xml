@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+
+	<bean id="customerRequestService" class="sample.spring.chapter04.CustomerRequestServiceImpl" scope="prototype">
+		<constructor-arg name="customerRequestDetails" ref="customerRequestDetails" />
+		<constructor-arg name="customerRequestDao" ref="customerRequestDao" />
+	</bean>
+	
+	<bean id="customerRequestDetails" class="sample.spring.chapter04.CustomerRequestDetails" scope="prototype" />
+	<bean id="customerRequestDao" class="sample.spring.chapter04.CustomerRequestDaoImpl" />
+	
+</beans>		 
