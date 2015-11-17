@@ -31,4 +31,7 @@
  	</bean>
  	
   -->
+  
+  <bean id="proto_dao" class="sample.spring.chapter02.bankapp.dao.FixedDepositHibernateDao" scope="prototype" />
+  
 </beans>

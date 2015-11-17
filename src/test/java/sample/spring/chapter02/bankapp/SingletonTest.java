@@ -48,4 +48,13 @@ public class SingletonTest {
 		Assert.assertNotSame("another Context instance ", controller1, controller2);
 	}
 	
+	
+	@Test
+	public void testPrototypeInstance() {
+		FixedDepositDao fixedDepositDao1 = (FixedDepositDao) context.getBean("proto_dao");
+		FixedDepositDao fixedDepositDao2 = (FixedDepositDao) context.getBean("proto_dao");
+		
+		Assert.assertNotSame("Scope Prototype Not Same", fixedDepositDao1, fixedDepositDao2);
+	}
+	
 }
