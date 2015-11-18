@@ -21,9 +21,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *  
  */
 
-public class BankApp {
+public class DependencyExam {
 	
-	private static Logger logger = Logger.getLogger(BankApp.class);
+	private static Logger logger = Logger.getLogger(DependencyExam.class);
 	
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:applicationContext_chapter04_dependencies.xml");
