@@ -3,6 +3,7 @@ package sample.spring.chapter07.database;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.slf4j.Logger;
@@ -10,6 +11,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -21,6 +26,9 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	public FixedDepositDaoImpl() {
 		logger.info("FixedDepositDaoImpl Create !!!");
@@ -51,8 +59,25 @@ public class FixedDepositDaoImpl implements FixedDepositDao {
 
 	@Override
 	public FixedDepositDetails getFixedDeposit(int fixedDepositId) {
-		// TODO Auto-generated method stub
-		return null;
+		final String sql = "select * from fixed_deposit_details where FIXED_DEPOSIT_ID =:fixedDepositId";
+		
+		SqlParameterSource namedParameters  = new MapSqlParameterSource("fixedDepositId",fixedDepositId);
+		
+		return namedParameterJdbcTemplate.queryForObject(sql,namedParameters,
+			new RowMapper<FixedDepositDetails>() {
+				public FixedDepositDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+					FixedDepositDetails fdd = new FixedDepositDetails();
+					fdd.setActive(rs.getString("active"));
+					fdd.setBankAccountId(rs.getInt("account_id"));
+					fdd.setFdAmount(rs.getInt("amount"));
+					fdd.setFdCreationDate(rs.getDate("FD_CREATION_DATE"));
+					fdd.setFixedDepositId(rs.getInt("FIXED_DEPOSIT_ID"));
+					fdd.setTenure(rs.getInt("TENURE"));
+					
+					return fdd;
+				}
+			}
+		);
 	}
 
 }
