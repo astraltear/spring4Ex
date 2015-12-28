@@ -37,8 +37,8 @@ public class JdbcExam {
 		fdd.setActive("Y");
 		fdd.setBankAccountId(bankAccountId);
 		fdd.setFdCreationDate(new Date());
-//		fdd.setFdAmount(500);
-		fdd.setFdAmount(2000); // rollback test code
+		fdd.setFdAmount(500);
+//		fdd.setFdAmount(2000); // rollback test code
 		fdd.setTenure(12);
 		try {
 			int fixedDepositId = fixedDepositService.createFixedDeposit(fdd);
