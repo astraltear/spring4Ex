@@ -1,0 +1,37 @@
+
+
+1. 아래와 같이 database, table 생성 
+CREATE DATABASE `spring_bank_app_db`;
+
+CREATE TABLE `bank_account_details` (
+	`account_id` INT(11) NOT NULL AUTO_INCREMENT,
+	`balance_amount` INT(11) NULL DEFAULT NULL,
+	`last_transaction_ts` TIMESTAMP NULL DEFAULT NULL,
+	PRIMARY KEY (`account_id`)
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=InnoDB
+;
+
+CREATE TABLE `fixed_deposit_details` (
+	`FIXED_DEPOSIT_ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`ACCOUNT_ID` INT(11) NULL DEFAULT NULL,
+	`FD_CREATION_DATE` DATE NULL DEFAULT NULL,
+	`AMOUNT` INT(11) NULL DEFAULT NULL,
+	`TENURE` INT(11) NULL DEFAULT NULL,
+	`ACTIVE` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_unicode_ci',
+	PRIMARY KEY (`FIXED_DEPOSIT_ID`)
+)
+COLLATE='utf8_unicode_ci'
+ENGINE=InnoDB
+;
+
+
+2. 시나리오
+	bank_account_details 테이블에 1,000입금
+	fixed_deposit_details 테이블에 500원짜리 계좌를 생성하면서 위의 테이블에서 500원 차감
+	데이터 정상 확인
+	
+	데이터 삭제 후 아래 부분 활성화(JdbcExam.java)
+	// rollback test code
+	재실행하면 데이터가 롤백 된다. 
