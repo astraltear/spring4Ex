@@ -1,4 +1,4 @@
-Spring 4.0.0
+Spring 4.2.4.RELEASE
 
 ## sample.spring.chapter01.bankapp
 	getBean						
@@ -76,9 +76,6 @@ Spring 4.0.0
 	@Before(value="invokeServiceMethods()")  
 	@AfterThrowing(value="exceptionMethods()", throwing="exception")  
 	
-	
-Spring 4.2.4
-AOP
 
 ## com.youngjee.springcore.first
 	<constructor-arg
