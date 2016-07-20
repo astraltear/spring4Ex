@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="controller" class="com.youngjee.springcore.first2.First2Controller">
+		<property name="first2Service"  ref="service"/>
+	</bean>
+	
+	
+	<bean id="service" class="com.youngjee.springcore.first2.First2Service">
+		<property name="first2Dao" ref="dao"/>
+	</bean>
+	
+	<bean id="dao" class="com.youngjee.springcore.first2.First2SDao"/>
+
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="controller" class="com.youngjee.springcore.factorybeanmethod.FixedDepositControllerImpl">
+		<property name="fixedDepositService" ref="service"/>
+	</bean>
+		
+	<bean id="service" class="com.youngjee.springcore.factorybeanmethod.FixedDepositServiceImpl">
+		<property name="fixedDepositDao" ref="dao" />
+	</bean>
+	
+	<!-- normal dao   --> 
+	<!-- <bean id="dao" class="com.youngjee.springcore.factorybeanmethod.FixedDepositHibernateDao" /> -->
+	
+	 
+	 <!-- factory method config dao  --> 
+	<!-- <bean id="dao" class="com.youngjee.springcore.factorybeanmethod.FactoryBeanDaoFactory" factory-method="getFixedDepositDao">
+ 		<constructor-arg index="0" value="jdbc"></constructor-arg>
+ 	</bean> -->
+	 
+	  
+	<bean id="daoFactory" class="com.youngjee.springcore.factorybeanmethod.FactoryBeanDaoFactory"></bean>
+	
+	<bean id="dao" factory-bean="daoFactory" factory-method="getFixedDepositDao">
+		<constructor-arg index="0" value="jdbc"/>
+	</bean>
+	  
+	  
+</beans>

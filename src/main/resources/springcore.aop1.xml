@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="logAop" class="com.youngjee.springcore.aop1.LogAOP"/>
+			<!--  
+			aspect: 공통기능
+			advice: aspect 기능 자체 
+			joinpoint: advice를 적용해야 하는 부분(메소드)
+			pointcut: joinpoint의 부분으로 실제로 advice가 적용된 부분 
+			
+			<aop:before>			: 메소드 실행 전에 advice 실행
+			<aop:after-returning>	: 정상적으로 메소드 실행 후에 advice 실행
+			<aop:after-throwing>	: 메소드 실행 중에 exception 발생 시 advice실행
+			<aop:after>				: 메소드 실행 중에 exception 발생하여도 advice실행
+			<aop:around>			: 메소드 실행 전/후 및 exception 발생시 advice실행 
+		-->
+		
+	<aop:config>
+		<aop:aspect id="logger" ref="logAop">
+									<!-- pointcut -->
+			<aop:pointcut expression="within(com.youngjee.springcore.aop1.*)" id="publicM"/>
+			<aop:around method="loggerAOP" pointcut-ref="publicM" />
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="student" class="com.youngjee.springcore.aop1.StudentDTO">
+		<property name="name" value="홍길동"/>
+		<property name="age" value="10"/>
+		<property name="gradeNum" value="3"/>
+		<property name="classNum" value="5"/>
+	</bean>
+	
+	<bean id="worker" class="com.youngjee.springcore.aop1.WorkerDTO">
+		<property name="name" value="홍길자"/>
+		<property name="age" value="10"/>
+		<property name="job" value="개발자"/>
+	</bean>
+	
+
+</beans>

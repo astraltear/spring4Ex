@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<context:annotation-config></context:annotation-config>
+	
+	<bean id="student_lifecycle" class="com.youngjee.springcore.first4.Student">
+		<constructor-arg value="Yeon Rin"/>
+		<constructor-arg value="12"/>
+		<constructor-arg>
+			<list>
+				<value>dancing</value>
+				<value>piano</value>
+			</list>
+		</constructor-arg>
+		
+		<property name="height" value="150"/>
+		<property name="weight" value="40"/>
+	</bean>
+	
+	<bean id="other_student" class="com.youngjee.springcore.beanlifecycle2.OtherStudent">
+		<constructor-arg>
+			<value>Kei</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>20</value>
+		</constructor-arg>
+	</bean>
+
+</beans>
