@@ -1,4 +1,4 @@
-package com.youngjee.db;
+package com.astraltear.db;
 
 public class MemberVO {
 	

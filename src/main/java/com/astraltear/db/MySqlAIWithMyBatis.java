@@ -1,4 +1,4 @@
-package com.youngjee.db;
+package com.astraltear.db;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
