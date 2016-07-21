@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class ProcedureTest {
+public class ProcedurePureJavaTest {
 
 	public static void main(String[] args) throws InterruptedException {
 //		callProcedure();
