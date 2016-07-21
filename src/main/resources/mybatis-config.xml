@@ -2,6 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <typeAliases>
-  <typeAlias alias="MemberVO" type="com.youngjee.db.MemberVO"/>
+  <typeAlias alias="MemberVO" type="com.astraltear.db.MemberVO"/>
+  <typeAlias alias="InOutProcVO" type="com.astraltear.db.InOutProcVO"/>
 </typeAliases>
 </configuration>

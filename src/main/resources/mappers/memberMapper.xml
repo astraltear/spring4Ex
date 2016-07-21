@@ -10,5 +10,13 @@
 		values( #{userid},#{userpw},#{username},#{email} )
 		
 	</insert>
-
+	
+	<select id="getProcValues" parameterType="InOutProcVO" statementType="CALLABLE">
+        { call InOutProc(
+                     #{param1,mode=IN,jdbcType=INTEGER},
+                     #{param2,mode=OUT,jdbcType=INTEGER},
+                     #{param3,mode=OUT,jdbcType=VARCHAR}
+                    )
+        }
+    </select>
 </mapper>
