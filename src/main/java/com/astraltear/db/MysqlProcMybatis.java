@@ -1,5 +1,7 @@
 package com.astraltear.db;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +9,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class MysqlProcMybatis {
+	
+//	http://stove99.tistory.com/78
 	
 /*
 CREATE PROCEDURE `InOutProc`(IN `param1` INT, OUT `param2` INT, OUT `param3` VARCHAR(50))
@@ -35,9 +39,10 @@ END
 		InOutProcVO inOutProcVO = new InOutProcVO();
 		inOutProcVO.setParam1(1);
 		
-		inOutProcVO = sqlSession.selectOne(namespace+".getProcValues",inOutProcVO);
+		Map map = sqlSession.selectOne(namespace+".getProcValues",inOutProcVO);
 		
-		System.out.println("result::"+inOutProcVO);
+//		System.out.println("result::"+inOutProcVO);
+		System.out.println(map.size());
 	}
 
 }
