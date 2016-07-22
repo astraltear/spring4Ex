@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.youngjee.db.mapper.MemberMapper">
-	<resultMap id="testProcedure" type="hashmap"></resultMap>
+	
+	<parameterMap id="testProcedure" type="HashMap">
+	    <parameter property="param1" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	    <parameter property="param2" mode="OUT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	    <parameter property="param3" mode="OUT" jdbcType="VARCHAR" javaType="java.lang.String" />
+	</parameterMap>
 	
 	<select id="getTime" resultType="string">
 		select now()
@@ -13,12 +18,26 @@
 		
 	</insert>
 	
-	<select id="getProcValues" parameterType="InOutProcVO" statementType="CALLABLE">
-        { call InOutProc(
-                     #{param1,mode=IN,jdbcType=INTEGER,resultMap=testProcedure},
-                     #{param2,mode=OUT,jdbcType=INTEGER},
-                     #{param3,mode=OUT,jdbcType=VARCHAR}
+	<select id="getProcMethod1" parameterMap="testProcedure" statementType="CALLABLE">
+		{call InOutProc(?, ?, ?)}
+    </select>
+    
+    <select id="getProcMethod2"  statementType="CALLABLE">
+		 { call InOutProc(
+                     #{param1,mode=IN,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{param2,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{param3,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.String}
                     )
         }
     </select>
+    
+     <select id="getProcMethod3" parameterType="InOutProcVO"  statementType="CALLABLE">
+		 { call InOutProc(
+                     #{param1,mode=IN,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{param2,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{param3,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.String}
+                    )
+        }
+    </select>
+    
 </mapper>

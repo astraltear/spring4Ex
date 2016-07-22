@@ -1,5 +1,6 @@
 package com.astraltear.db;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -36,13 +37,29 @@ END
 
 		SqlSession sqlSession = (SqlSession) context.getBean("sqlSession");
 		
+		HashMap<String, Object> map1 = new HashMap<String,Object>();
+		map1.put("param1", 1);
+		map1.put("param2", 0);
+		map1.put("param3", "");
+		
+		sqlSession.selectOne(namespace+".getProcMethod1",map1);
+		System.out.println("getProcMethod1 map param2:"+map1.get("param2"));
+		System.out.println("getProcMethod1 map param3:"+map1.get("param3"));
+		
+		HashMap<String, Object> map2 = new HashMap<String,Object>();
+		map2.put("param1", 1);
+		map2.put("param2", 0);
+		map2.put("param3", "");
+		
+		sqlSession.selectOne(namespace+".getProcMethod2",map2);
+		System.out.println("getProcMethod2 map param2:"+map2.get("param2"));
+		System.out.println("getProcMethod2 map param3:"+map2.get("param3"));
+		
 		InOutProcVO inOutProcVO = new InOutProcVO();
 		inOutProcVO.setParam1(1);
 		
-		Map map = sqlSession.selectOne(namespace+".getProcValues",inOutProcVO);
-		
-//		System.out.println("result::"+inOutProcVO);
-		System.out.println(map.size());
+		sqlSession.selectOne(namespace+".getProcMethod3",inOutProcVO);
+		System.out.println("inOutProcVO=>"+inOutProcVO.toString());
 	}
 
 }
