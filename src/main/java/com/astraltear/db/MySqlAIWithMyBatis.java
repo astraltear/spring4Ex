@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.astraltear.vo.MemberVO;
+
 public class MySqlAIWithMyBatis {
 	
 	private static final String namespace="com.youngjee.db.mapper.MemberMapper";

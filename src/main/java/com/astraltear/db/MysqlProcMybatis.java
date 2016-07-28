@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.astraltear.vo.InOutProcVO;
+
 public class MysqlProcMybatis {
 	
 //	http://stove99.tistory.com/78

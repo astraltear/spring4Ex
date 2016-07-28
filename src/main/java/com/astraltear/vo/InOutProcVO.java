@@ -1,4 +1,4 @@
-package com.astraltear.db;
+package com.astraltear.vo;
 
 public class InOutProcVO {
 	private int param1;

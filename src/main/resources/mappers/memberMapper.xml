@@ -3,9 +3,9 @@
 <mapper namespace="com.youngjee.db.mapper.MemberMapper">
 	
 	<parameterMap id="testProcedure" type="HashMap">
-	    <parameter property="param1" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer" />
-	    <parameter property="param2" mode="OUT" jdbcType="INTEGER" javaType="java.lang.Integer" />
-	    <parameter property="param3" mode="OUT" jdbcType="VARCHAR" javaType="java.lang.String" />
+	    <parameter property="par1" mode="IN" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	    <parameter property="par2" mode="OUT" jdbcType="INTEGER" javaType="java.lang.Integer" />
+	    <parameter property="par3" mode="OUT" jdbcType="VARCHAR" javaType="java.lang.String" />
 	</parameterMap>
 	
 	<select id="getTime" resultType="string">
@@ -24,9 +24,9 @@
     
     <select id="getProcMethod2"  statementType="CALLABLE">
 		 { call InOutProc(
-                     #{param1,mode=IN,jdbcType=INTEGER,javaType=java.lang.Integer},
-                     #{param2,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer},
-                     #{param3,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.String}
+                     #{p1,mode=IN,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{p2,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer},
+                     #{p3,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.String}
                     )
         }
     </select>
