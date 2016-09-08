@@ -17,6 +17,19 @@ public class Example {
 		} else {
 			System.out.println("else if");
 		}
+		
+		BbsDTO bbsDTO = new BbsDTO();
+		bbsDTO.setLinkUrl(null);
+		try {
+			if(bbsDTO.getLinkUrl() == null ||("").equals(bbsDTO.getLinkUrl())) {
+				System.out.println("IN IF");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("END!!!");
 	}
 
 }

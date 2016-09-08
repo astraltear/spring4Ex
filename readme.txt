@@ -161,4 +161,6 @@ Spring 4.2.4.RELEASE
 	@Pointcut("within(com.javalec.ex.*)")				com.javalec.ex 패키지 안에 있는 모든 메소드
 	@Pointcut("within(com.javalec.ex..*)")				com.javalec.ex 패키지 및 하위 패키지의 모든 메소드
 	@Pointcut("within(com.javalec.ex.Worker)")			com.javalec.ex.Worker의 모든 메소드 
-		
+
+
+	
